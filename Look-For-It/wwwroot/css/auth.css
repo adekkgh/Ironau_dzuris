@@ -1,0 +1,155 @@
+﻿body {
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-style: normal;
+}
+
+/**********************   LogIn   ***************************/
+
+.login-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 250px;
+}
+
+.login__img {
+    width: 100px;
+}
+
+.login__title {
+    margin: 20px 0 0 0;
+    font-weight: bold;
+}
+
+.login__form {
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px
+}
+
+.login__form-input-container {
+    width: 100%;
+}
+
+.login__form-input-warning {
+    font-size: 12px;
+    color: red;
+}
+
+.login__form-login,
+.login__form-password {
+    background: lightgray;
+    width: 100%;
+    height: 40px;
+    border: none;
+    text-indent: 15px;
+}
+
+.login__form-button {
+    align-self: center;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    width: 100px;
+    height: 30px;
+    margin-top: 6px;
+    cursor: pointer;
+}
+
+.login__form-button:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.login__question {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}
+
+/**********************   SignUp   ***************************/
+
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 200px
+}
+
+.sign-up__img {
+    width: 100px;
+}
+
+.sign-up__title {
+    margin: 20px 0 0 0;
+    font-weight: bold;
+}
+
+.sign-up__form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    gap: 10px
+}
+
+.sign-up__form-input-container {
+    width: 100%;
+}
+
+.sign-up__form-input-warning {
+    font-size: 12px;
+    color: red;
+}
+
+.sign-up__form-names-container {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.sign-up__form-tel,
+.sign-up__form-email,
+.sign-up__form-password,
+.sign-up__form-password-repeat,
+.sign-up__form-name,
+.sign-up__form-lastname {
+    background: lightgray;
+    width: 100%;
+    height: 40px;
+    border: none;
+    text-indent: 15px;
+}
+
+.sign-up__form-button {
+    align-self: center;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 6px;
+    height: 30px;
+}
+
+.sign-up__form-button:hover {
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+.sign-up__question {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+}

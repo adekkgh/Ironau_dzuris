@@ -1,0 +1,30 @@
+﻿@model UserViewModel
+
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("_AuthStyles")
+
+
+
+<div class="login-container">
+    <img src="/images/pfp-icon.jpg" class="login__img" />
+    <h3 class="login__title">ВХОД</h3>
+    <form action="/Auth/LogIntoAccount" method="post" class="login__form">
+        <div asp-validation-summary="None"></div>
+        <div class="login__form-input-container">
+            <input asp-for="Email" type="email" class="login__form-login" placeholder="Email" />
+            <span asp-validation-for="Email" class="login__form-input-warning"></span>
+        </div>
+        <div class="login__form-input-container">
+            <input asp-for="Password" type="password" class="login__form-password" placeholder="Пароль" />
+            <span asp-validation-for="Password" class="login__form-input-warning"></span>
+        </div>
+        <div class="login__form-remember">
+            <input type="checkbox" name="remember" value="true" />
+            <label>Запомнить меня</label>
+        </div>
+        <button type="submit" class="login__form-button">ВОЙТИ</button>
+    </form>
+    <p class="login__question">Еще не зарегистрированы? <a class="login-register-link" asp-controller="Auth" asp-action="SignUp"><br/>Сделайте это сейчас!</a></p>
+</div>
