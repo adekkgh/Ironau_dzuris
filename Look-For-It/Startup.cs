@@ -46,7 +46,7 @@ namespace Look_For_It
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Auth}/{action=LogIn}");
             });
         }
     }

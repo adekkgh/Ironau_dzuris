@@ -1,0 +1,37 @@
+﻿@model UserViewModel
+
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("_AuthStyles")
+
+
+
+<div class="sign-up-container">
+    <h3 class="sign-up__title">Регистрация</h3>
+    <form action="/Auth/CreateNewAccount" method="post" class="sign-up__form">
+        <div asp-validation-summary="None"></div>
+        <div class="sign-up__form-input-container">
+            <input asp-for="Name" type="text" class="sign-up__form-name" placeholder="Имя" />
+            <span asp-validation-for="Name" class="sign-up__form-input-warning"></span>
+        </div>
+        <div class="sign-up__form-input-container">
+            <input asp-for="Email" type="email" class="sign-up__form-email" placeholder="E-mail" />
+            <span asp-validation-for="Email" class="sign-up__form-input-warning"></span>
+        </div>
+        <div class="sign-up__form-input-container">
+            <input asp-for="NewPassword" type="password" class="sign-up__form-password" placeholder="Пароль" />
+            <span asp-validation-for="NewPassword" class="sign-up__form-input-warning"></span>
+        </div>
+        <div class="sign-up__form-input-container">
+            <input asp-for="NewPasswordConfirmation" type="password" class="sign-up__form-password-repeat" placeholder="Подтвердите пароль" />
+            <span asp-validation-for="NewPasswordConfirmation" class="sign-up__form-input-warning"></span>
+        </div>
+        <div class="sign-up__form-remember">
+            <input type="checkbox" name="agreement" value="true" />
+            <label>Я согласен с <a asp-controller="Home" asp-action="Privacy" target="_blank">условиями</a></label>
+        </div>
+        <button type="submit" class="sign-up__form-button">Зарегистрироваться</button>
+    </form>
+    <p class="sign-up__question">Уже зарегистрированы? <a class="login-register-link" asp-controller="Auth" asp-action="LogIn"><br/>Войдите уже сейчас!</a></p>
+</div>
