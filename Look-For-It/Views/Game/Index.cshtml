@@ -1,0 +1,47 @@
+﻿@await Html.PartialAsync("_GameStyles")
+
+
+
+<div class="message" id="message">Кликни на соответсвующую слову картинку!</div>
+<div class="game-container" id="gameContainer">
+    <img src="~/images/game/apple.jpg" alt="яблоко">
+    <img src="~/images/game/plane.png" alt="самолет">
+    <img src="~/images/game/dog.jpg" alt="собака">
+    <img src="~/images/game/house.jpg" alt="дом">
+    <img src="~/images/game/car.jpg" alt="машина">
+    <img src="~/images/game/cat.jpeg" alt="кошка">
+</div>
+
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const images = document.querySelectorAll('.game-container img');
+        const messageElement = document.getElementById('message');
+
+        let currentWord = '';
+
+        function getRandomWord() {
+            const words = Array.from(images).map(img => img.alt);
+            return words[Math.floor(Math.random() * words.length)];
+        }
+
+        function startGame() {
+            currentWord = getRandomWord();
+            messageElement.textContent = `Найди: ${currentWord}`;
+        }
+
+        images.forEach(img => {
+            img.addEventListener('click', function () {
+                if (this.alt === currentWord) {
+                    alert('Верно!');
+                    startGame();
+                } else {
+                    alert('Что-то не похоже! Попробуй снова');
+                }
+            });
+        });
+
+        startGame();
+    });
+</script>
