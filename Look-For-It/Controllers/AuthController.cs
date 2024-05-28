@@ -1,10 +1,18 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Look_For_It.Db;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 
 namespace Look_For_It.Controllers
 {
     public class AuthController : Controller
     {
+        private readonly IUsersRepository usersRepository;
+
+        public AuthController(IUsersRepository usersRepository)
+        {
+            this.usersRepository = usersRepository;
+        }
+
         public IActionResult LogIn()
         {
             return View();
@@ -20,18 +28,25 @@ namespace Look_For_It.Controllers
             return View();
         }
 
-        public string CreateNewAccount(string name, string lastName, string phone, string email, string newPassword, string newPassportConfirmation, bool agreement)
+        public IActionResult CreateNewAccount(string name, string email, string newPassword, string newPassportConfirmation, bool agreement)
         {
             if (agreement == false)
             {
                 ModelState.AddModelError("", "Please read and agree to our privacy policy");
             }
-            else if (name == newPassword || lastName == newPassword)
+            else if (name == newPassword)
             {
                 ModelState.AddModelError("", "Please make sure your password doesn't match your name or lastname");
             }
 
-            return "temp";
+            usersRepository.Add(new Db.Models.User
+            {
+                Name = name,
+                Email = email,
+                Password = newPassword
+            });
+
+            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult LogIntoAccount(string email, string password, bool remember)
