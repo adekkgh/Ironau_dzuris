@@ -10,6 +10,8 @@ namespace Look_For_It.Db
     {
         public DbSet<User> Users { get; set; }
 
+        public DbSet<Phrase> Phrases { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
             Database.Migrate();

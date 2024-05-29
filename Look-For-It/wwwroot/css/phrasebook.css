@@ -1,0 +1,49 @@
+﻿.phrasebook__add-button {
+    background: red;
+    margin-top: 40px;
+}
+
+.phrasebook__table {
+    width: 80%;
+    margin: 50px auto;
+    border-collapse: collapse;
+}
+
+.phrasebook__table th {
+    border-bottom: 1px solid #000000;
+    padding-bottom: 10px;
+}
+
+.phrasebook__table tbody {
+    color: #808080;
+}
+
+.phrasebook__table tbody td {
+    padding: 5px;
+}
+
+/*******************   AddingForm   ***********************/
+
+.add-phrase-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 300px;
+    margin: 50px auto;
+}
+
+.add-phrase-form__input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.add-phrase-form__input {
+    padding: 5px;
+}
+
+.add-phrase-form__input-warning {
+    font-size: 12px;
+    color: red;
+}

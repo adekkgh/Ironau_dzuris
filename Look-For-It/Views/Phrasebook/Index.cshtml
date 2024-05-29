@@ -1,0 +1,33 @@
+﻿@model List<PhraseViewModel>
+
+@await Html.PartialAsync("_PhrasebookStyles")
+
+
+<div class="text-center">
+    <h1>Разговорник</h1>
+    <h4>Данный раздел содержит список всех доступных в нашей системе фраз с переводом</h4>
+    <h6><em>В настоящий момент поиск и фильтрация по тематике недоступны</em></h6>
+    @* TODO: add if condition to grant admin access to add new phrases button *@
+    <a class="btn phrasebook__add-button" href="/PhraseBook/Add">Добавить фразу</a>
+    <table class="phrasebook__table">
+        <thead>
+            <tr>
+                <th>Тематика</th>
+                <th>Русский язык</th>
+                <th>Осетинский язык</th>
+                @* TODO: Add edit phrase button for admin *@
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var phrase in Model.OrderBy(phrase => phrase.Theme))
+            {
+                <tr>
+                    <td>@phrase.Theme</td>
+                    <td>@phrase.Phrase_ru</td>
+                    <td>@phrase.Phrase_os</td>
+                    @* TODO: Add edit phrase button for admin *@
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
