@@ -19,7 +19,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach(var phrase in Model.OrderBy(phrase => phrase.Theme))
+            @foreach (var phrase in Model.OrderBy(phrase => phrase.Theme))
             {
                 <tr>
                     <td>@phrase.Theme</td>
