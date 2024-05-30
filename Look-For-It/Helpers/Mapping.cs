@@ -1,4 +1,5 @@
-﻿using Look_For_It.Db.Models;
+﻿using Look_For_It.Db;
+using Look_For_It.Db.Models;
 using Look_For_It.Models;
 using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;

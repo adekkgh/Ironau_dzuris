@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Look_For_It.Db;
+using Look_For_It.Helpers;
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Look_For_It.Models
@@ -15,7 +17,7 @@ namespace Look_For_It.Models
         [EmailAddress(ErrorMessage = "Пожалуйста, введите подлинную электоронную почту")]
         public string Email { get; set; }
 
-        [Required(ErrorMessage = "Неверный пароль")]
+        [Required(ErrorMessage = "Введите пароль")]
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Придумайте пароль")]
