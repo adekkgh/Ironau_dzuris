@@ -31,6 +31,7 @@ namespace Look_For_It
             services.AddControllersWithViews();
 
             services.AddTransient<IUsersRepository, UsersDbRepository>();
+            services.AddTransient<IPhraseRepository, PhrasesDbRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

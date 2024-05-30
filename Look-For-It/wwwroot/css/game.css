@@ -1,22 +1,80 @@
 ﻿.game-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    max-width: 800px;
-    margin: 0 auto;
-    border: 2px solid #333;
-    padding: 20px;
-    background-color: #f5f5f5;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
 }
 
-.game-container img {
-    max-width: 100px;
-    margin: 10px;
+.game__current-phrase {
+    padding: 0 10px 5px;
+    margin: 50px 0 0;
+    border-bottom: 2px solid #000000;
+}
+
+.game__answers {
+    display: flex;
+    gap: 50px;
+}
+
+.game__answers-item {
+    margin: 0;
+    padding: 5px 10px;
     cursor: pointer;
+    border-radius: 8px;
+    background: #c4c4c4;
+    transition: background-color 0.3s ease;
 }
 
-.message {
-    text-align: center;
-    font-size: 1.5em;
-    margin-bottom: 20px;
+.game__answers-item.mistake {
+    border-radius: 8px;
+    background-color: #ff0000;
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+    color: #ffffff;
+}
+
+.game__answers-item.right {
+    border-radius: 8px;
+    background-color: #00ff00;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.loader.on {
+    width: 60px;
+    aspect-ratio: 4;
+    --_g: no-repeat radial-gradient(circle closest-side,#000 90%,#0000);
+    background: var(--_g) 0% 50%, var(--_g) 50% 50%, var(--_g) 100% 50%;
+    background-size: calc(100%/3) 100%;
+    animation: l7 1s infinite linear;
+}
+
+@keyframes l7 {
+    33% {
+        background-size: calc(100%/3) 0%,calc(100%/3) 100%,calc(100%/3) 100%
+    }
+
+    50% {
+        background-size: calc(100%/3) 100%,calc(100%/3) 0%,calc(100%/3) 100%
+    }
+
+    66% {
+        background-size: calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%
+    }
 }

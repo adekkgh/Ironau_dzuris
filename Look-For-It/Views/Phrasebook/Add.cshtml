@@ -1,0 +1,21 @@
+﻿@model PhraseViewModel
+
+@await Html.PartialAsync("_PhrasebookStyles")
+
+<h1 class="text-center">Добавление новой фразы</h1>
+<form class="add-phrase-form" action="/Phrasebook/CreatePhrase" method="post">
+    <select asp-for="Theme">
+        <option>Тематика 1</option>
+        <option>Тематика 2</option>
+        <option>Тематика 3</option>
+    </select>
+    <div class="add-phrase-form__input-container">
+        <input asp-for="Phrase_ru" type="text" class="add-phrase-form__input" placeholder="Русский язык" />
+        <span asp-validation-for="Phrase_ru" class="add-phrase-form__input-warning"></span>
+    </div>
+    <div class="add-phrase-form__input-container">
+        <input asp-for="Phrase_os" type="text" class="add-phrase-form__input" placeholder="Осетинский язык" />
+        <span asp-validation-for="Phrase_os" class="add-phrase-form__input-warning"></span>
+    </div>
+    <button type="submit">Добавить фразу</button>
+</form>

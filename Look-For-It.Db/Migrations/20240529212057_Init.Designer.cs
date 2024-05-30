@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Look_For_It.Db.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240527230349_Init")]
+    [Migration("20240529212057_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,6 +20,26 @@ namespace Look_For_It.Db.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("Look_For_It.Db.Models.Phrase", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Phrase_os")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phrase_ru")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Them")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Phrases");
+                });
 
             modelBuilder.Entity("Look_For_It.Db.Models.User", b =>
                 {
