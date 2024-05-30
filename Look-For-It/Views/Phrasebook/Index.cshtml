@@ -1,4 +1,7 @@
 ﻿@model List<PhraseViewModel>
+@{
+    var userId = Context.Request.Cookies["user"];
+}
 
 @await Html.PartialAsync("_PhrasebookStyles")
 
@@ -7,8 +10,10 @@
     <h1>Разговорник</h1>
     <h4>Данный раздел содержит список всех доступных в нашей системе фраз с переводом</h4>
     <h6><em>В настоящий момент поиск и фильтрация по тематике недоступны</em></h6>
-    @* TODO: add if condition to grant admin access to add new phrases button *@
-    <a class="btn phrasebook__add-button" href="/PhraseBook/Add">Добавить фразу</a>
+    @if (userId == "00000000-aaaa-aaaa-aaaa-000000000000")
+    {
+        <a class="btn phrasebook__add-button" href="/PhraseBook/Add">Добавить фразу</a>
+    }
     <table class="phrasebook__table">
         <thead>
             <tr>
