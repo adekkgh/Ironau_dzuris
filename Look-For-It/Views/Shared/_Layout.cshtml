@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Look For It</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version=true />
     <link rel="stylesheet" href="~/css/auth.css" asp-append-version=true />
     <link rel="icon" href="~/icon.png" />
 </head>
@@ -29,7 +29,10 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Играть</a>
                         </li>
-                        <li class="nav-item ml-auto">
+                        <li class="ml-auto nav-item">
+                            @await Component.InvokeAsync("User")
+                        </li>
+                        <li class="ml-3 nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Выйти</a>
                         </li>
                     </ul>

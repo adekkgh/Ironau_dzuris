@@ -16,5 +16,17 @@ namespace Look_For_It.Db
         {
             Database.Migrate();
         }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<User>().HasData(new User()
+            {
+                Id = new Guid("00000000-aaaa-aaaa-aaaa-000000000000"),
+                Name = "admin",
+                Email = "admin@admin.ru",
+                Password = "aDMiN"
+
+            });
+        }
     }
 }

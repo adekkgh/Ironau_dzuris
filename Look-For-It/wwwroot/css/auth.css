@@ -153,3 +153,20 @@
     text-align: left;
     margin: 0;
 }
+
+/**********************   SignUp   ***************************/
+
+.user-component {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 24px;
+}
+
+.user-component img {
+    width: 24px;
+}
+
+.user-component p {
+    margin: 0;
+}
