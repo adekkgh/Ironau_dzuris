@@ -32,6 +32,11 @@ namespace Look_For_It.Db
             return databaseContext.Users.FirstOrDefault(u => u.Email == email);
         }
 
+        public User FindById(Guid id)
+        {
+            return databaseContext.Users.FirstOrDefault(u => u.Id == id);
+        }
+
         public bool IsEmailValid(string email)
         {
             var user = databaseContext.Users.FirstOrDefault(u => u.Email == email);
@@ -58,6 +63,7 @@ namespace Look_For_It.Db
         public List<User> GetUsers();
         public void Add(User user);
         public User FindByEmail(string email);
+        public User FindById(Guid id);
         public bool IsEmailValid(string email);
         public bool IsPasswordValid(string email, string password);
     }
