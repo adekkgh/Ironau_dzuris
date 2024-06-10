@@ -1,11 +1,15 @@
-﻿.phrasebook__add-button {
+﻿.phrasebook-container {
+    margin-bottom: 100px;
+}
+
+.phrasebook__add-button {
     background: red;
     margin-top: 40px;
 }
 
 .phrasebook__table {
     width: 80%;
-    margin: 50px auto;
+    margin: 50px auto 0;
     border-collapse: collapse;
 }
 
