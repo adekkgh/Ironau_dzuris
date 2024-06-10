@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Look-For-It.Db\Look-For-It.Db.csproj" />
+    <ProjectReference Include="..\Look-For-It.Db\Ironau-Dzuris.Db.csproj" />
   </ItemGroup>
 
 </Project>
