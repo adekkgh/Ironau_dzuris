@@ -9,6 +9,15 @@
 
 <div class="sign-up-container">
     <h3 class="sign-up__title">Регистрация</h3>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error-container">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
     <form action="/Auth/CreateNewAccount" method="post" class="sign-up__form">
         <div asp-validation-summary="None"></div>
         <div class="sign-up__form-input-container">
@@ -20,11 +29,14 @@
             <span asp-validation-for="Email" class="sign-up__form-input-warning"></span>
         </div>
         <div class="sign-up__form-input-container">
-            <input asp-for="NewPassword" type="password" class="sign-up__form-password" placeholder="Пароль" />
+            <input asp-for="NewPassword" type="password" id="passwordInput" class="sign-up__form-password" placeholder="Пароль" />
+            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility()">
+                <i id="eyeIcon" class="fa fa-eye"></i>
+            </button>
             <span asp-validation-for="NewPassword" class="sign-up__form-input-warning"></span>
         </div>
         <div class="sign-up__form-input-container">
-            <input asp-for="NewPasswordConfirmation" type="password" class="sign-up__form-password-repeat" placeholder="Подтвердите пароль" />
+            <input asp-for="NewPasswordConfirmation" type="password" id="repeatPasswordInput" class="sign-up__form-password-repeat" placeholder="Подтвердите пароль" />
             <span asp-validation-for="NewPasswordConfirmation" class="sign-up__form-input-warning"></span>
         </div>
         <div class="sign-up__form-remember">
@@ -33,5 +45,25 @@
         </div>
         <button type="submit" class="sign-up__form-button">Зарегистрироваться</button>
     </form>
-    <p class="sign-up__question">Уже зарегистрированы? <a class="login-register-link" asp-controller="Auth" asp-action="LogIn"><br/>Войдите уже сейчас!</a></p>
+    <p class="sign-up__question">Уже зарегистрированы? <a class="login-register-link" asp-controller="Auth" asp-action="LogIn"><br/>Войдите в аккаут!</a></p>
 </div>
+
+
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+        else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>
