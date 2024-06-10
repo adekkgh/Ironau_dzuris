@@ -34,6 +34,7 @@
 }
 
 .login__form-input-container {
+    position: relative;
     width: 100%;
 }
 
@@ -49,6 +50,7 @@
     height: 40px;
     border: none;
     text-indent: 15px;
+    padding-right: 40px;
 }
 
 .login__form-button {
@@ -65,14 +67,23 @@
 
 .login__form-button:hover {
     background: white;
+    cursor: pointer;
     color: black;
     border: 1px solid black;
 }
 
+.login__form-remember input {
+    cursor: pointer;
+}
+
 .login__question {
     width: 100%;
-    text-align: left;
+    text-align: center;
+    font-size: 14px;
     margin: 0;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 5px;
 }
 
 /**********************   SignUp   ***************************/
@@ -105,6 +116,7 @@
 }
 
 .sign-up__form-input-container {
+    position: relative;
     width: 100%;
 }
 
@@ -130,6 +142,7 @@
     height: 40px;
     border: none;
     text-indent: 15px;
+    padding-right: 40px;
 }
 
 .sign-up__form-button {
@@ -143,18 +156,47 @@
 }
 
 .sign-up__form-button:hover {
+    cursor: pointer;
     background: white;
     color: black;
     border: 1px solid black;
 }
 
-.sign-up__question {
-    width: 100%;
-    text-align: left;
-    margin: 0;
+.sign-up__form-remember {
+    font-size: 12px;
 }
 
-/**********************   SignUp   ***************************/
+.sign-up__form-remember input {
+    cursor: pointer;
+}
+
+.sign-up__question {
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    margin: 0;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 5px;
+}
+
+/**********************   ShowPasswordBtn   ***************************/
+
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.password-toggle-btn i {
+    font-size: 20px;
+    color: #000;
+}
+
+/**********************   UserComponent   ***************************/
 
 .user-component {
     display: flex;
@@ -169,4 +211,15 @@
 
 .user-component p {
     margin: 0;
+}
+
+/**********************   Error   ***************************/
+
+.error-container {
+    margin-top: 10px;
+    width: 100%;
+    background: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 12px;
 }

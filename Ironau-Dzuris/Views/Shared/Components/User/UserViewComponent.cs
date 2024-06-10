@@ -1,4 +1,5 @@
 ﻿using Ironau_Dzuris.Db;
+using Ironau_Dzuris.Db.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,6 +20,10 @@ namespace Ironau_Dzuris.Views.Shared.Components.User
         public IViewComponentResult Invoke()
         {
             var id = httpContextAccessor.HttpContext.Request.Cookies["user"];
+            if (id == null)
+            {
+                return View("User", "");
+            }
             var user = usersRepository.FindById(Guid.Parse(id));
             return View("User", user.Name);
         }

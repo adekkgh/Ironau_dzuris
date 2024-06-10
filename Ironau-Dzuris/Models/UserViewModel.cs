@@ -21,6 +21,8 @@ namespace Ironau_Dzuris.Models
         public string Password { get; set; }
 
         [Required(ErrorMessage = "Придумайте пароль")]
+        [RegularExpression("^(?=.*[A-Z])(?=.*\\d)(?=.*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?])[A-Za-z\\d!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]*$", ErrorMessage = "Пароль должен содержать хотя бы один спецсимвол, цифру и заглавную букву")]
+        [StringLength(50, MinimumLength = 8, ErrorMessage = "Пароль должен содержать минимум 8 символов")]
         public string NewPassword { get; set; }
 
         [Required(ErrorMessage = "Подтвердите пароль")]

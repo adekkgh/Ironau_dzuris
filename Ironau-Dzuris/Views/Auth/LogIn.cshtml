@@ -10,6 +10,15 @@
 <div class="login-container">
     <img src="/images/pfp-icon.jpg" class="login__img" />
     <h3 class="login__title">ВХОД</h3>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error-container">
+            @foreach(var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
     <form action="/Auth/LogIntoAccount" method="post" class="login__form">
         <div asp-validation-summary="None"></div>
         <div class="login__form-input-container">
@@ -17,7 +26,10 @@
             <span asp-validation-for="Email" class="login__form-input-warning"></span>
         </div>
         <div class="login__form-input-container">
-            <input asp-for="Password" type="password" class="login__form-password" placeholder="Пароль" />
+            <input asp-for="Password" type="password" id="passwordInput" class="login__form-password" placeholder="Пароль" />
+            <button type="button" class="password-toggle-btn" onclick="togglePasswordVisibility()">
+                <i id="eyeIcon" class="fa fa-eye"></i>
+            </button>
             <span asp-validation-for="Password" class="login__form-input-warning"></span>
         </div>
         <div class="login__form-remember">
@@ -28,3 +40,23 @@
     </form>
     <p class="login__question">Еще не зарегистрированы? <a class="login-register-link" asp-controller="Auth" asp-action="SignUp"><br/>Сделайте это сейчас!</a></p>
 </div>
+
+
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.getElementById("passwordInput");
+        var eyeIcon = document.getElementById("eyeIcon");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            eyeIcon.classList.remove("fa-eye");
+            eyeIcon.classList.add("fa-eye-slash");
+        }
+        else {
+            passwordInput.type = "password";
+            eyeIcon.classList.remove("fa-eye-slash");
+            eyeIcon.classList.add("fa-eye");
+        }
+    }
+</script>

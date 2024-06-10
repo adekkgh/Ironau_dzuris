@@ -2,7 +2,16 @@
 
 <link rel="stylesheet" href="~/css/auth.css" asp-append-version=true />
 
-<div class="user-component">
-    <img src="~/images/pfp-icon.jpg" />
-    <p>@Model</p>
-</div>
+@if (Model == "")
+{
+    <script>
+         window.location.href = '@Url.Action("LogIn", "Auth")';
+    </script>
+}
+else
+{
+    <div class="user-component">
+        <img src="~/images/pfp-icon.jpg" />
+        <p>@Model</p>
+    </div>
+}

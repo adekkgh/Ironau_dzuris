@@ -41,40 +41,49 @@ namespace Ironau_Dzuris.Controllers
             return View();
         }
 
-        public IActionResult CreateNewAccount(string name, string email, string newPassword, string newPassportConfirmation, bool agreement)
+        public IActionResult CreateNewAccount(string name, string email, string newPassword)
         {
-            if (agreement == false)
+            var existingUser = usersRepository.FindByEmail(email);
+            if(existingUser == null)
             {
-                ModelState.AddModelError("", "Please read and agree to our privacy policy");
+                var newUser = new User
+                {
+                    Name = name,
+                    Email = email,
+                    Password = newPassword
+                };
+                usersRepository.Add(newUser);
+
+                CookieOptions option = new CookieOptions();
+                option.Expires = DateTime.Now.AddDays(1);
+                Response.Cookies.Append("user", newUser.Id.ToString(), option);
+
+                return RedirectToAction("Index", "Home");
             }
-            else if (name == newPassword)
+            else
             {
-                ModelState.AddModelError("", "Please make sure your password doesn't match your name");
+                ModelState.AddModelError(String.Empty, "Пользователь с таким логином уже существует");
+                return View("SignUp");
             }
-
-            var newUser = new User
-            {
-                Name = name,
-                Email = email,
-                Password = newPassword
-            };
-            usersRepository.Add(newUser);
-
-            CookieOptions option = new CookieOptions();
-            option.Expires = DateTime.Now.AddDays(1);
-            Response.Cookies.Append("user", newUser.Id.ToString(), option);
-
-            return RedirectToAction("Index", "Home");
         }
 
         public IActionResult LogIntoAccount(string email, string password, bool remember)
         {
             var user = usersRepository.FindByEmail(email);
             var isPasswordValid = usersRepository.IsPasswordValid(email, password);
-            if (user == null || !isPasswordValid)
+
+            if (user == null)
             {
-                return RedirectToAction("LogIn", "Auth");
+                ModelState.AddModelError(String.Empty, "Пользователя с таким логином не существует");
+                return View("Login");
+                //return RedirectToAction("LogIn", "Auth");
             }
+            if (!isPasswordValid)
+            {
+                ModelState.AddModelError(String.Empty, "Неверный пароль");
+                return View("Login");
+            }
+
             CookieOptions option = new CookieOptions();
             if (remember)
             {
@@ -84,6 +93,7 @@ namespace Ironau_Dzuris.Controllers
             {
                 option.Expires = DateTime.Now.AddDays(1);
             }
+
             // TODO: upload user's role to cookies
             Response.Cookies.Append("user", user.Id.ToString(), option);
             return RedirectToAction("Index", "Home");
