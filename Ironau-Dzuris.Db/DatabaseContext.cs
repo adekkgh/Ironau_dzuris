@@ -24,7 +24,8 @@ namespace Ironau_Dzuris.Db
                 Id = new Guid("00000000-aaaa-aaaa-aaaa-000000000000"),
                 Name = "admin",
                 Email = "admin@admin.ru",
-                Password = "aDMiN"
+                Password = "aDMiN",
+                Role = "admin"
 
             });
 

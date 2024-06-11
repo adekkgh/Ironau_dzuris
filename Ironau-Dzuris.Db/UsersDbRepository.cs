@@ -56,6 +56,18 @@ namespace Ironau_Dzuris.Db
             }
             return false;
         }
+
+        public void ChangeEmail(User user, string newEmail)
+        {
+            databaseContext.Users.FirstOrDefault(u => u.Id == user.Id).Email = newEmail;
+            databaseContext.SaveChanges();
+        }
+
+        public void ChangePassword(User user, string newPasword)
+        {
+            databaseContext.Users.FirstOrDefault(u => u.Id == user.Id).Password = newPasword;
+            databaseContext.SaveChanges();
+        }
     }
 
     public interface IUsersRepository
@@ -66,5 +78,7 @@ namespace Ironau_Dzuris.Db
         public User FindById(Guid id);
         public bool IsEmailValid(string email);
         public bool IsPasswordValid(string email, string password);
+        public void ChangeEmail(User user, string newEmail);
+        public void ChangePassword(User user, string newPasword);
     }
 }

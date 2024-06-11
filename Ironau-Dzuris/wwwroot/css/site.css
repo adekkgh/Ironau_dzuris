@@ -110,11 +110,11 @@ body {
     display: block;
     max-height: 500px;
     opacity: 1;
-    animation: dropdown-open 1s forwards;
+    animation: dropdown-open 0.5s forwards;
 }
 
 .hide {
-    animation: dropdown-close 1s forwards;
+    animation: dropdown-close 0.5s forwards;
 }
 
 .dropdown-content li {
@@ -126,7 +126,9 @@ body {
 }
 
 .dropdown-content a {
+    display: inline-block;
     padding: 0;
+    width: 100%;
 }
 
 .dropdown-content a:hover {
