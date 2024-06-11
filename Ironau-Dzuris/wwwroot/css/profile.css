@@ -1,0 +1,247 @@
+﻿.profile-card {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin: 0 auto;
+}
+
+h3, h5, p {
+    margin: 0;
+}
+
+.profile-card__image {
+    width: 300px;
+}
+
+.profile-card__info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.profile-card__info-name {
+    grid-column: span 2;
+    display: flex;
+    align-items: center;
+}
+
+.profile-card__info-name span {
+    color: #808080;
+    font-size: 18px;
+}
+
+.profile-card__info-email {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left
+}
+
+.profile-card__info-buttons {
+    grid-column: span 2;
+    display: flex;
+    gap: 10px;
+    align-items: end;
+}
+
+.edit-email-button {
+    height: 40px;
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    background: #808080;
+    padding: 10px;
+}
+
+.edit-email-button:hover {
+    cursor: pointer;
+    background: #535151;
+    padding: 10px;
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.edit-password-button {
+    height: 40px;
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    background: #808080;
+    padding: 10px;
+}
+
+.edit-password-button:hover {
+    cursor: pointer;
+    background: #535151;
+    padding: 10px;
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+.delete-button {
+    height: 40px;
+    display: block;
+    margin: 0;
+    text-decoration: none;
+    background: #ff0000;
+    color: #ffffff;
+    padding: 10px;
+}
+
+.delete-button:hover {
+    cursor: pointer;
+    background: #d40000;
+    color: #ffffff !important;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/***********************   ChangeEmail   ************************/
+
+.change-email__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    margin: 0 auto;
+    padding-top: 250px;
+}
+
+.change-email__title {
+    margin: 20px 0 0 0;
+    font-weight: bold;
+}
+
+.change-email {
+    width: 100%;
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 10px
+}
+
+.change-email__input-container {
+    position: relative;
+    width: 100%;
+}
+
+.change-email__input-warning {
+    font-size: 12px;
+    color: red;
+}
+
+.change-email__input-email {
+    background: lightgray;
+    width: 100%;
+    height: 40px;
+    border: none;
+    text-indent: 15px;
+    padding-right: 40px;
+}
+
+.change-email__button {
+    align-self: center;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 6px;
+    height: 30px;
+}
+
+.change-email__button:hover {
+    cursor: pointer;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+/***********************   ChangePassword   ************************/
+
+.change-password-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 300px;
+    margin: 0 auto;
+    padding-top: 200px
+}
+
+.change-password__title {
+    margin: 20px 0 0 0;
+    font-weight: bold;
+}
+
+.change-password {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 100%;
+    gap: 10px
+}
+
+.change-password__input-container {
+    position: relative;
+    width: 100%;
+}
+
+.change-password__input-warning {
+    font-size: 12px;
+    color: red;
+}
+
+.change-password__password-old,
+.change-password__password,
+.change-password__password-repeat {
+    background: lightgray;
+    width: 100%;
+    height: 40px;
+    border: none;
+    text-indent: 15px;
+    padding-right: 40px;
+}
+
+.change-password__button {
+    align-self: center;
+    background: black;
+    color: white;
+    font-weight: bold;
+    border: none;
+    margin-top: 6px;
+    height: 30px;
+}
+
+.change-password__button:hover {
+    cursor: pointer;
+    background: white;
+    color: black;
+    border: 1px solid black;
+}
+
+/**********************   ShowPasswordBtn   ***************************/
+
+.password-toggle-btn {
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.password-toggle-btn i {
+    font-size: 20px;
+    color: #000;
+}
+
+/***********************   Error   ************************/
+
+.error-container {
+    margin-top: 10px;
+    width: 100%;
+    background: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    font-size: 14px;
+}

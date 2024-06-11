@@ -23,5 +23,17 @@ namespace Ironau_Dzuris.Helpers
         {
             return phrases.Select(phrase => PhraseToViewModel(phrase)).ToList();
         }
+
+        public static UserViewModel UserToUserViewModel(User user)
+        {
+            return new UserViewModel
+            {
+                Id = user.Id,
+                Name = user.Name,
+                Email = user.Email,
+                Password = user.Password,
+                Role = user.Role,
+            };
+        }
     }
 }

@@ -28,5 +28,9 @@ namespace Ironau_Dzuris.Models
         [Required(ErrorMessage = "Подтвердите пароль")]
         [Compare("NewPassword", ErrorMessage = "Это не совпадает с выбранным вами паролем")]
         public string NewPasswordConfirmation { get; set; }
+
+        [Required(ErrorMessage = "Подтвердите пароль")]
+        public string OldPassword { get; set; }
+        public string Role { get; set; }
     }
 }

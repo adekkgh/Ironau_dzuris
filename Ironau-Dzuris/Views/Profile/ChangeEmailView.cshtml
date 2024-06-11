@@ -1,0 +1,27 @@
+﻿@model UserViewModel
+
+@{
+    Layout = null;
+}
+@await Html.PartialAsync("_ProfileStyles")
+
+<div class="change-email__container">
+    <h3 class="change-email__title">Изменение электронной почты</h3>
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <div class="error-container">
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(value => value.Errors))
+            {
+                <p>@error.ErrorMessage</p>
+            }
+        </div>
+    }
+    <form action="/Profile/ChangeEmail" method="post" class="change-email">
+        <div asp-validation-summary="None"></div>
+        <div class="change-email__input-container">
+            <input asp-for="Email" type="email" class="change-email__input-email" placeholder="Введите новый email" />
+            <span asp-validation-for="Email" class="change-email__input-warning"></span>
+        </div>
+        <button type="submit" class="change-email__button">Подтвердить</button>
+    </form>
+</div>

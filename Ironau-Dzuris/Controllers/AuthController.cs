@@ -50,13 +50,15 @@ namespace Ironau_Dzuris.Controllers
                 {
                     Name = name,
                     Email = email,
-                    Password = newPassword
+                    Password = newPassword,
+                    Role = "user"
                 };
                 usersRepository.Add(newUser);
 
                 CookieOptions option = new CookieOptions();
                 option.Expires = DateTime.Now.AddDays(1);
                 Response.Cookies.Append("user", newUser.Id.ToString(), option);
+                Response.Cookies.Append("role", newUser.Role, option);
 
                 return RedirectToAction("Index", "Home");
             }
@@ -76,7 +78,6 @@ namespace Ironau_Dzuris.Controllers
             {
                 ModelState.AddModelError(String.Empty, "Пользователя с таким логином не существует");
                 return View("Login");
-                //return RedirectToAction("LogIn", "Auth");
             }
             if (!isPasswordValid)
             {
@@ -94,8 +95,8 @@ namespace Ironau_Dzuris.Controllers
                 option.Expires = DateTime.Now.AddDays(1);
             }
 
-            // TODO: upload user's role to cookies
             Response.Cookies.Append("user", user.Id.ToString(), option);
+            Response.Cookies.Append("role", user.Role, option);
             return RedirectToAction("Index", "Home");
         }
     }

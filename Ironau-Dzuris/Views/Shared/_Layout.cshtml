@@ -21,7 +21,7 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Политика конфиденциальности</a>
+                            <a class="nav-link text-dark" target="_blank" asp-area="" asp-controller="Home" asp-action="Privacy">Политика конфиденциальности</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Phrasebook" asp-action="Index">Разговорник</a>
@@ -33,13 +33,10 @@
                             @await Component.InvokeAsync("User")
                             <ul class="dropdown-content">
                                 <li>
-                                    <a class=" text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Профиль</a>
+                                    <a class="text-dark" asp-area="" asp-controller="Profile" asp-action="Index">Профиль</a>
                                 </li>
                                 <li>
-                                    Просто
-                                </li>
-                                <li>
-                                    <a class=" text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Выход</a>
+                                    <a class="text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Выход</a>
                                 </li>
                             </ul>
                         </li>
