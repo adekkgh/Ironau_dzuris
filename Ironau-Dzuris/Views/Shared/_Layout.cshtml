@@ -29,11 +29,19 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Game" asp-action="Index">Играть</a>
                         </li>
-                        <li class="ml-auto nav-item">
+                        <li class="ml-auto nav-item dropdown-list">
                             @await Component.InvokeAsync("User")
-                        </li>
-                        <li class="ml-3 nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Выйти</a>
+                            <ul class="dropdown-content">
+                                <li>
+                                    <a class=" text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Профиль</a>
+                                </li>
+                                <li>
+                                    Просто
+                                </li>
+                                <li>
+                                    <a class=" text-dark" asp-area="" asp-controller="Auth" asp-action="LogOut">Выход</a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -58,3 +66,29 @@
     @RenderSection("Scripts", required: false)
 </body>
 </html>
+
+
+
+<script>
+    const dropList = document.querySelector('.dropdown-list');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    dropList.addEventListener('click', function () {
+        if (dropdownContent.classList.contains('show')) {
+            dropdownContent.classList.remove('show');
+            dropdownContent.classList.add('hide');
+        } else {
+            dropdownContent.classList.remove('hide');
+            dropdownContent.classList.add('show');
+        }
+    });
+
+    window.addEventListener('click', function (event) {
+        if(!dropList.contains(event.target)){
+            if (dropdownContent.classList.contains('show')) {
+                dropdownContent.classList.remove('show');
+                dropdownContent.classList.add('hide');
+            }
+        }
+    });
+</script>
