@@ -1,0 +1,55 @@
+﻿@model List<PhraseViewModel>
+@{
+    var currentPhrase = ViewData["phrase"] as PhraseViewModel;
+}
+
+@await Html.PartialAsync("_GameStyles")
+
+
+
+<h1 class="text-center">Выбирай правильный перевод фразы!</h1>
+<div class="phrase-game-container" id="gameContainer">
+    <h3 class="phrase-game__current-phrase">@currentPhrase.Phrase_ru</h3>
+    <div class="phrase-game__answers">
+        @foreach (var answer in Model)
+        {
+            <p class="phrase-game__answers-item">@answer.Phrase_os</p>
+        }
+    </div>
+    @* <div class="loader"></div> *@
+</div>
+
+
+
+<script>
+    let answers = document.querySelectorAll('.phrase-game__answers-item');
+    //let loader = document.querySelector('.loader');
+    let rightAnswer;
+
+    for (let answer of answers) {
+        answer.addEventListener('click', async () => {
+            answers.forEach(a => a.classList.remove('mistake'));
+            const data = await getAnswer();
+            if (answer.textContent === data) {
+                answer.classList.add('right');
+                //loader.classList.add('on');
+                setTimeout(() => {
+                    window.location.assign('http://localhost:5000/Game/PhraseGame');
+                }, 300);
+            }
+            else {
+                answer.classList.add('mistake');
+            }
+        });
+    }
+
+    async function getAnswer() {
+        try {
+            const response = await fetch('http://localhost:5000/Game/Answer');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching answer');
+        }
+    }
+</script>

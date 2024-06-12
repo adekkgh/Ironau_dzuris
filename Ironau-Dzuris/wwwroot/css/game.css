@@ -1,22 +1,22 @@
-﻿.game-container {
+﻿.phrase-game-container {
     display: flex;
     flex-direction: column;
     gap: 30px;
     align-items: center;
 }
 
-.game__current-phrase {
+.phrase-game__current-phrase {
     padding: 0 10px 5px;
     margin: 50px 0 0;
     border-bottom: 2px solid #000000;
 }
 
-.game__answers {
+.phrase-game__answers {
     display: flex;
     gap: 50px;
 }
 
-.game__answers-item {
+.phrase-game__answers-item {
     margin: 0;
     padding: 5px 10px;
     cursor: pointer;
@@ -25,7 +25,11 @@
     transition: background-color 0.3s ease;
 }
 
-.game__answers-item.mistake {
+.phrase-game__answers-item:hover {
+    color: #ffffff;
+}
+
+.phrase-game__answers-item.mistake {
     border-radius: 8px;
     background-color: #ff0000;
     animation: shake 0.5s;
@@ -33,7 +37,7 @@
     color: #ffffff;
 }
 
-.game__answers-item.right {
+.phrase-game__answers-item.right {
     border-radius: 8px;
     background-color: #00ff00;
 }
@@ -76,5 +80,117 @@
 
     66% {
         background-size: calc(100%/3) 100%,calc(100%/3) 100%,calc(100%/3) 0%
+    }
+}
+
+/************************   ModePicker   ******************************/
+
+.mode-pick-container {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 100px auto 0;
+    border: 1px solid #000000;
+    border-radius: 5px;
+}
+
+.mode-pick__phrase {
+    background: #ffffff;
+    font-size: 20px;
+    transition: transform 0.2s, box-shadow 0.2s, border-radius 0.2s;
+}
+
+.mode-pick__words {
+    background: #ff0000;
+    color: #ffffff;
+    font-size: 20px;
+    border-radius: unset;
+    transition: transform 0.2s, box-shadow 0.2s, border-radius 0.2s;
+}
+
+.mode-pick__home {
+    background: #ffd800;
+    font-size: 20px;
+    transition: transform 0.2s, box-shadow 0.2s, border-radius 0.2s;
+}
+
+.mode-pick__phrase:hover,
+.mode-pick__words:hover,
+.mode-pick__home:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+/************************   WordsGame   ******************************/
+
+.words-game-container {
+    margin: 100px auto 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.words-game__current-word {
+    padding: 0 10px 5px;
+    margin: 50px 0 0;
+    border-bottom: 2px solid #000000;
+}
+
+.words-game__answers {
+    margin-top: 20px;
+    display: flex;
+    gap: 30px;
+}
+
+.words-game__answers-item {
+    width: 150px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    padding: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.words-game__answers-item:hover {
+    border: 1px solid #c4c4c4;
+    cursor: pointer;
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.words-game__answers-item.mistake {
+    border-radius: 5px;
+    border: 5px solid #ff0000;
+    animation: shake 0.5s;
+    animation-iteration-count: 1;
+    color: #ffffff;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.words-game__answers-item.right {
+    border-radius: 5px;
+    border: 5px solid #00ff00;
+}
+
+@keyframes shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-5px);
+    }
+
+    50% {
+        transform: translateX(5px);
+    }
+
+    75% {
+        transform: translateX(-5px);
+    }
+
+    100% {
+        transform: translateX(0);
     }
 }
