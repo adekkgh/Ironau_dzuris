@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Ironau_Dzuris.Helpers;
 using Ironau_Dzuris.Db.Models;
+using Ironau_Dzuris.Models;
+using System;
 
 namespace Ironau_Dzuris.Controllers
 {
@@ -34,6 +36,18 @@ namespace Ironau_Dzuris.Controllers
             };
             phraseRepository.Add(newPhrase);
 
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Edit(Guid phraseId)
+        {
+            var phrase = phraseRepository.TryGetById(phraseId);
+            return View(Mapping.PhraseToViewModel(phrase));
+        }
+
+        public IActionResult ChangePhrase(PhraseViewModel changedPhrase)
+        {
+            phraseRepository.Edit(Mapping.ViewModelToPhrase(changedPhrase));
             return RedirectToAction("Index");
         }
     }

@@ -1,4 +1,5 @@
 ﻿using Ironau_Dzuris.Db.Models;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,9 +53,26 @@ namespace Ironau_Dzuris.Db
             };
         }
 
+        public Phrase TryGetById(Guid id)
+        {
+            var phrase = databaseContext.Phrases.FirstOrDefault(p => p.Id == id);
+            if (phrase == null) return null;
+
+            return phrase;
+        }
+
         public void Add(Phrase phrase)
         {
             databaseContext.Phrases.Add(phrase);
+            databaseContext.SaveChanges();
+        }
+
+        public void Edit(Phrase changedPhrase)
+        {
+            var phrase = databaseContext.Phrases.FirstOrDefault(p => p.Id == changedPhrase.Id);
+            phrase.Theme = changedPhrase.Theme;
+            phrase.Phrase_ru = changedPhrase.Phrase_ru;
+            phrase.Phrase_os = changedPhrase.Phrase_os;
             databaseContext.SaveChanges();
         }
     }
@@ -62,8 +80,10 @@ namespace Ironau_Dzuris.Db
     public interface IPhraseRepository
     {
         public List<Phrase> GetPhrases();
-        public void Add(Phrase phrase);
         public Phrase GetRandomPhrase();
         public List<Phrase> GetWrongPhrases(Guid right_id);
+        public Phrase TryGetById(Guid id);
+        public void Add(Phrase phrase);
+        public void Edit(Phrase changedPhrase);
     }
 }

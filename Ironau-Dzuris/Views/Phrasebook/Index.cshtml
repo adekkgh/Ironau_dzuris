@@ -12,7 +12,7 @@
     <h6><em>В настоящий момент поиск и фильтрация по тематике недоступны</em></h6>
     @if (userRole == "admin")
     {
-        <a class="btn phrasebook__add-button" href="/PhraseBook/Add">Добавить фразу</a>
+        <a class="btn phrasebook__add-button" asp-controller="Phrasebook" asp-action="Add">Добавить фразу</a>
     }
     <table class="phrasebook__table">
         <thead>
@@ -20,7 +20,10 @@
                 <th>Тематика</th>
                 <th>Русский язык</th>
                 <th>Осетинский язык</th>
-                @* TODO: Add edit phrase button for admin *@
+                @if (userRole == "admin")
+                {
+                    <th></th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -30,7 +33,12 @@
                     <td>@phrase.Theme</td>
                     <td>@phrase.Phrase_ru</td>
                     <td>@phrase.Phrase_os</td>
-                    @* TODO: Add edit phrase button for admin *@
+                    @if(userRole == "admin")
+                    {
+                        <td>
+                                <a class="btn phrasebook__table__edit-btn" asp-controller="Phrasebook" asp-action="Edit" asp-route-phraseId="@phrase.Id">Изменить</a>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>

@@ -6,6 +6,7 @@ namespace Ironau_Dzuris.Models
 {
     public class PhraseViewModel
     {
+        public Guid Id { get; set; }
         public string Theme { get; set; }
 
         [Required(ErrorMessage = "Введите значение фразы на русском языке")]

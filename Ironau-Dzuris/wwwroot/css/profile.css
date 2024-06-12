@@ -44,54 +44,42 @@ h3, h5, p {
 }
 
 .edit-email-button {
-    height: 40px;
-    display: block;
     margin: 0;
     text-decoration: none;
-    background: #808080;
-    padding: 10px;
+    background: #a5a4a4;
 }
 
 .edit-email-button:hover {
     cursor: pointer;
     background: #535151;
-    padding: 10px;
-    color: #ffffff !important;
+    color: #ffffff;
     text-decoration: none;
 }
 
 .edit-password-button {
-    height: 40px;
-    display: block;
     margin: 0;
     text-decoration: none;
-    background: #808080;
-    padding: 10px;
+    background: #a5a4a4;
 }
 
 .edit-password-button:hover {
     cursor: pointer;
     background: #535151;
-    padding: 10px;
-    color: #ffffff !important;
+    color: #ffffff;
     text-decoration: none;
 }
 
 .delete-button {
-    height: 40px;
-    display: block;
     margin: 0;
     text-decoration: none;
     background: #ff0000;
     color: #ffffff;
-    padding: 10px;
 }
 
 .delete-button:hover {
     cursor: pointer;
     background: #d40000;
-    color: #ffffff !important;
-    padding: 10px;
+    color: #ffffff;
     text-decoration: none;
 }
 

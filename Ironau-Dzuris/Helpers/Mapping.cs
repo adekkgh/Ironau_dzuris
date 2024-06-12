@@ -13,6 +13,7 @@ namespace Ironau_Dzuris.Helpers
         {
             return new PhraseViewModel
             {
+                Id = phrase.Id,
                 Theme = phrase.Theme,
                 Phrase_ru = phrase.Phrase_ru,
                 Phrase_os = phrase.Phrase_os,
@@ -22,6 +23,17 @@ namespace Ironau_Dzuris.Helpers
         public static List<PhraseViewModel> AllPhrasesToViewModel(List<Phrase> phrases)
         {
             return phrases.Select(phrase => PhraseToViewModel(phrase)).ToList();
+        }
+
+        public static Phrase ViewModelToPhrase(PhraseViewModel phraseViewModel)
+        {
+            return new Phrase
+            {
+                Id = phraseViewModel.Id,
+                Theme = phraseViewModel.Theme,
+                Phrase_ru = phraseViewModel.Phrase_ru,
+                Phrase_os = phraseViewModel.Phrase_os
+            };
         }
 
         public static UserViewModel UserToUserViewModel(User user)
