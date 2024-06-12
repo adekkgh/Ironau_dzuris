@@ -2,8 +2,9 @@
 
 @await Html.PartialAsync("_PhrasebookStyles")
 
-<h1 class="text-center">Добавление новой фразы</h1>
-<form class="phrase-form" action="/Phrasebook/CreatePhrase" method="post">
+<h1 class="text-center">Изменение фразы</h1>
+<form class="phrase-form" action="/Phrasebook/ChangePhrase" method="post">
+    <input type="hidden" asp-for="Id" />
     <select asp-for="Theme" class="phrase-form__select">
         <option>Общение</option>
         <option>Цифры и числа</option>
@@ -17,5 +18,5 @@
         <input asp-for="Phrase_os" type="text" class="phrase-form__input" placeholder="Осетинский язык" />
         <span asp-validation-for="Phrase_os" class="phrase-form__input-warning"></span>
     </div>
-    <button type="submit" class="phrase-form__button">Добавить</button>
+    <button type="submit" class="phrase-form__button">Изменить</button>
 </form>
