@@ -19,6 +19,11 @@ namespace Ironau_Dzuris.Controllers
 
         public IActionResult Index()
         {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var userId = httpContextAccessor.HttpContext.Request.Cookies["user"];
             var user = usersRepository.FindById(Guid.Parse(userId));
             return View(Mapping.UserToUserViewModel(user));
@@ -26,11 +31,21 @@ namespace Ironau_Dzuris.Controllers
 
         public IActionResult ChangeEmailView()
         {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
         public IActionResult ChangeEmail(string email)
         {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var userId = httpContextAccessor.HttpContext.Request.Cookies["user"];
             var user = usersRepository.FindById(Guid.Parse(userId));
 
@@ -58,11 +73,21 @@ namespace Ironau_Dzuris.Controllers
 
         public IActionResult ChangePasswordView()
         {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View();
         }
 
         public IActionResult ChangePassword(string oldPassword, string newPassword, string newPasswordConfirmation)
         {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var userId = httpContextAccessor.HttpContext.Request.Cookies["user"];
             var user = usersRepository.FindById(Guid.Parse(userId));
 

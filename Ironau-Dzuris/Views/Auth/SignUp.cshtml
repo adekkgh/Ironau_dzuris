@@ -40,8 +40,9 @@
             <span asp-validation-for="NewPasswordConfirmation" class="sign-up__form-input-warning"></span>
         </div>
         <div class="sign-up__form-remember">
-            <input type="checkbox" name="agreement" value="true" />
+            <input asp-for="Agreement" type="checkbox" name="agreement" value="true" />
             <label>Я согласен с <a asp-controller="Home" asp-action="Privacy" target="_blank">условиями использования</a></label>
+            <span asp-validation-for="Agreement" class="sign-up__form-input-warning"></span>
         </div>
         <button type="submit" class="sign-up__form-button">Зарегистрироваться</button>
     </form>

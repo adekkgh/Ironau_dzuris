@@ -32,5 +32,7 @@ namespace Ironau_Dzuris.Models
         [Required(ErrorMessage = "Подтвердите пароль")]
         public string OldPassword { get; set; }
         public string Role { get; set; }
+        [Required(ErrorMessage = "Пожалуйста, прочитайте и ознакомтесь с нашими условиями использования")]
+        public bool Agreement {  get; set; }
     }
 }
