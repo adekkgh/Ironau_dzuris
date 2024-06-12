@@ -36,6 +36,23 @@ namespace Ironau_Dzuris.Helpers
             };
         }
 
+        public static WordViewModel WordToViewModel(Word word)
+        {
+            return new WordViewModel
+            {
+                Id = word.Id,
+                Theme = word.Theme,
+                Word_ru = word.Word_ru,
+                Word_os = word.Word_os,
+                ImagePath = word.ImagePath
+            };
+        }
+
+        public static List<WordViewModel> AllWordsToViewModel(List<Word> words)
+        {
+            return words.Select(word => WordToViewModel(word)).ToList();
+        }
+
         public static UserViewModel UserToUserViewModel(User user)
         {
             return new UserViewModel

@@ -1,0 +1,52 @@
+﻿@model List<WordViewModel>
+@{
+    var currentWord = ViewData["word"] as WordViewModel;
+}
+
+@await Html.PartialAsync("_GameStyles")
+
+
+
+<h1 class="text-center">Выбирай подходящую картинку!</h1>
+<div class="words-game-container" id="gameContainer">
+    <h3 class="words-game__current-word">Выбери "@currentWord.Word_os.ToLower()"</h3>
+    <div class="words-game__answers">
+        @foreach (var answer in Model)
+        {
+            <img class="words-game__answers-item" src="@Url.Content(answer.ImagePath)" alt="@answer.Word_ru" />
+        }
+    </div>
+</div>
+
+
+
+<script>
+    let answers = document.querySelectorAll('.words-game__answers-item');
+    let rightAnswer;
+
+    for (let answer of answers) {
+        answer.addEventListener('click', async () => {
+            answers.forEach(a => a.classList.remove('mistake'));
+            const data = await getAnswer();
+            if (answer.alt === data) {
+                answer.classList.add('right');
+                setTimeout(() => {
+                    window.location.assign('http://localhost:5000/Game/WordsGame');
+                }, 300);
+            }
+            else {
+                answer.classList.add('mistake');
+            }
+        });
+    }
+
+    async function getAnswer() {
+        try {
+            const response = await fetch('http://localhost:5000/Game/Answer');
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching answer');
+        }
+    }
+</script>

@@ -14,15 +14,27 @@ namespace Ironau_Dzuris.Controllers
     public class GameController : Controller
     {
         private readonly IPhraseRepository phraseRepository;
+        private readonly IWordsRepository wordsRepository;
         private static string rightAnswer;
 
-        public GameController(IPhraseRepository phraseRepository)
+        public GameController(IPhraseRepository phraseRepository, IWordsRepository wordsRepository)
         {
             this.phraseRepository = phraseRepository;
+            this.wordsRepository = wordsRepository;
         }
 
         public IActionResult Index()
         {
+            return View();
+        }
+
+        public IActionResult PhraseGame()
+        {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             return View(GeneratePhrases());
         }
 
@@ -44,6 +56,34 @@ namespace Ironau_Dzuris.Controllers
         public IActionResult Answer()
         {
             return Json(rightAnswer);
+        }
+
+        public IActionResult WordsGame()
+        {
+            if (Request.Cookies["user"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(GenerateWords());
+        }
+
+        public List<WordViewModel> GenerateWords()
+        {
+            Random random = new Random();
+            List<Word> answers = new List<Word>();
+            var currentWord = wordsRepository.GetRandomWord();
+            var wrongWords = wordsRepository.GetWrongWords(currentWord.Id);
+            answers.Add(currentWord);
+            foreach(var wrongWord in wrongWords)
+            {
+                answers.Add(wrongWord);
+            }
+
+            ViewData["word"] = Mapping.WordToViewModel(currentWord);
+            rightAnswer = Mapping.WordToViewModel(currentWord).Word_ru;
+
+            return Mapping.AllWordsToViewModel(answers.OrderBy(a => random.Next()).ToList());
         }
     }
 }

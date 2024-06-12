@@ -32,6 +32,7 @@ namespace Ironau_Dzuris
 
             services.AddTransient<IUsersRepository, UsersDbRepository>();
             services.AddTransient<IPhraseRepository, PhrasesDbRepository>();
+            services.AddTransient<IWordsRepository, WordsDbRepository>();
             services.AddHttpContextAccessor();
         }
 
