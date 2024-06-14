@@ -83,6 +83,31 @@ h3, h5, p {
     text-decoration: none;
 }
 
+@media (max-width: 420px) {
+
+    .profile-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .profile-card__info {
+        gap: 20px;
+    }
+
+    .profile-card__info-name span {
+        font-size: 12px;
+    }
+
+    .profile-card__info-email {
+        grid-column: span 2;
+    }
+
+    .profile-card__info-buttons {
+        justify-content: center;
+    }
+}
+
 /***********************   ChangeEmail   ************************/
 
 .change-email__container {

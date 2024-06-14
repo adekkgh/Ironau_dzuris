@@ -83,6 +83,14 @@
     }
 }
 
+@media (max-width: 420px) {
+
+    .phrase-game__answers {
+        gap: 20px;
+    }
+
+}
+
 /************************   ModePicker   ******************************/
 
 .mode-pick-container {
@@ -192,5 +200,17 @@
 
     100% {
         transform: translateX(0);
+    }
+}
+
+@media (max-width: 420px) {
+
+    .words-game__answers-item {
+        width: 100px;
+    }
+
+    .words-game__answers {
+        justify-content: center;
+        flex-wrap: wrap;
     }
 }
