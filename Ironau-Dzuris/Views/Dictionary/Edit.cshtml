@@ -1,0 +1,22 @@
+﻿@model WordViewModel
+
+@await Html.PartialAsync("_PhrasebookStyles")
+
+<h1 class="text-center">Изменение слова</h1>
+<form class="phrase-form" action="/Dictionary/ChangeWord" method="post">
+    <input type="hidden" asp-for="Id" />
+    <select asp-for="Theme" class="phrase-form__select">
+        <option>Дом</option>
+        <option>Цифры и числа</option>
+        <option>Животные</option>
+    </select>
+    <div class="phrase-form__input-container">
+        <input asp-for="Word_ru" type="text" class="phrase-form__input" placeholder="Русский язык" />
+        <span asp-validation-for="Word_ru" class="phrase-form__input-warning"></span>
+    </div>
+    <div class="phrase-form__input-container">
+        <input asp-for="Word_os" type="text" class="phrase-form__input" placeholder="Осетинский язык" />
+        <span asp-validation-for="Word_os" class="phrase-form__input-warning"></span>
+    </div>
+    <button type="submit" class="phrase-form__button">Изменить</button>
+</form>

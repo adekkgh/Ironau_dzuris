@@ -53,6 +53,17 @@ namespace Ironau_Dzuris.Helpers
             return words.Select(word => WordToViewModel(word)).ToList();
         }
 
+        public static Word ViewModelToWord(WordViewModel wordViewModel)
+        {
+            return new Word
+            {
+                Id = wordViewModel.Id,
+                Theme = wordViewModel.Theme,
+                Word_ru = wordViewModel.Word_ru,
+                Word_os = wordViewModel.Word_os
+            };
+        }
+
         public static UserViewModel UserToUserViewModel(User user)
         {
             return new UserViewModel
