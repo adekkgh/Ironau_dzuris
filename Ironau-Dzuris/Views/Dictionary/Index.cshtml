@@ -1,0 +1,44 @@
+﻿@model List<WordViewModel>
+@{
+    var userRole = Context.Request.Cookies["role"];
+}
+
+@await Html.PartialAsync("_PhrasebookStyles")
+
+
+<div class="text-center phrasebook-container">
+    <h1>Словарь</h1>
+    @if (userRole == "admin")
+    {
+        <a class="btn phrasebook__add-button" asp-controller="Dictionary" asp-action="Add">Добавить слово</a>
+    }
+    <table class="phrasebook__table">
+        <thead>
+            <tr>
+                <th>Тематика</th>
+                <th>Русский язык</th>
+                <th>Осетинский язык</th>
+                @if (userRole == "admin")
+                {
+                    <th></th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var word in Model.OrderBy(word => word.Theme).ThenBy(word => word.Word_ru))
+            {
+                <tr>
+                    <td>@word.Theme</td>
+                    <td>@word.Word_ru</td>
+                    <td>@word.Word_os</td>
+                    @if (userRole == "admin")
+                    {
+                        <td>
+                            <a class="btn phrasebook__table__edit-btn" asp-controller="Dictionary" asp-action="Edit" asp-route-wordId="@word.Id">Изменить</a>
+                        </td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -48,6 +48,29 @@ namespace Ironau_Dzuris.Db
             return wrongWords;
         }
 
+        public Word TryGetById(Guid id)
+        {
+            var word = databaseContext.Words.FirstOrDefault(w => w.Id == id);
+            if (word == null) return null;
+
+            return word;
+        }
+
+        public void Add(Word word)
+        {
+            databaseContext.Words.Add(word);
+            databaseContext.SaveChanges();
+        }
+
+        public void Edit(Word changedWord)
+        {
+            var word = databaseContext.Words.FirstOrDefault(p => p.Id == changedWord.Id);
+            word.Theme = changedWord.Theme;
+            word.Word_ru = changedWord.Word_ru;
+            word.Word_os = changedWord.Word_os;
+            databaseContext.SaveChanges();
+        }
+
     }
 
     public interface IWordsRepository
@@ -55,5 +78,8 @@ namespace Ironau_Dzuris.Db
         List<Word> GetWords();
         public Word GetRandomWord();
         public List<Word> GetWrongWords(Guid right_id);
+        public Word TryGetById(Guid id);
+        public void Add(Word word);
+        public void Edit(Word changedWord);
     }
 }
